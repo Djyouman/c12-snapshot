@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>C12 Member Snapshot — Life &amp; Leadership Balance</title>
+<meta name="theme-color" content="#12203C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="C12 Snapshot">
+<meta name="description" content="C12 Member Snapshot — digital Life &amp; Leadership Balance Wheel with photo capture, trends, and 30-day recovery plans.">
+<style>
+  :root{
+    --navy:#1B2A4A; --navy-deep:#12203C; --navy-ink:#152238;
+    --bronze:#A87C4F; --bronze-light:#C9A06A; --bronze-pale:#EFE4D4;
+    --chart-1:#3A5D9F; --chart-2:#B9741F;
+    --good:#1E7B3C; --good-bg:#E3F2E7; --bad:#B3261E; --bad-bg:#F9E5E3;
+    --ahead:#8A5A14; --ahead-bg:#F5E8D2;
+    --paper:#F5F3EF; --surface:#FFFFFF; --line:#E2DFD8;
+    --ink:#1C2434; --ink-2:#55606F; --ink-3:#8B93A0;
+    --shadow:0 1px 3px rgba(20,30,55,.08), 0 4px 16px rgba(20,30,55,.06);
+    --radius:14px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --chart-1:#5C7FC4; --chart-2:#C08034;
+      --good:#5CB878; --good-bg:#173322; --bad:#E4776D; --bad-bg:#3A1F1C;
+      --ahead:#D0A05C; --ahead-bg:#33270F;
+      --paper:#0F1420; --surface:#141A26; --line:#28324A;
+      --ink:#E8EAF0; --ink-2:#A9B2C2; --ink-3:#6C7789;
+      --bronze-pale:#2C2618;
+      --shadow:0 1px 3px rgba(0,0,0,.4);
+    }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    font-family:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
+    background:var(--paper); color:var(--ink); line-height:1.45;
+    padding-bottom:70px; overflow-x:hidden;
+  }
+  input, select{min-width:0;}
+  /* ---------- Header ---------- */
+  header{
+    background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 70%);
+    color:#fff; padding:18px 20px 16px;
+  }
+  .hd-row{display:flex; align-items:center; gap:14px; max-width:900px; margin:0 auto;}
+  .hd-title{flex:1;}
+  .kicker{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--bronze-light); font-weight:600;}
+  h1{font-size:22px; font-weight:800; letter-spacing:.04em; text-transform:uppercase;}
+  .hd-sub{font-size:12px; color:#B9C2D4; margin-top:2px;}
+  .hd-actions{display:flex; gap:8px;}
+  .icon-btn{
+    background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); color:#fff;
+    border-radius:8px; padding:7px 10px; font-size:12px; cursor:pointer; font-family:inherit;
+  }
+  .icon-btn:active{background:rgba(255,255,255,.2);}
+  /* ---------- Identity bar ---------- */
+  .id-bar{max-width:900px; margin:14px auto 0; padding:0 16px; display:flex; gap:10px; flex-wrap:wrap;}
+  .id-bar .field{flex:1; min-width:150px;}
+  label.small{display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); font-weight:700; margin-bottom:4px;}
+  input[type=text], input[type=month], input[type=date], textarea, select{
+    width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px;
+    background:var(--surface); color:var(--ink); font-family:inherit; font-size:15px;
+  }
+  textarea{resize:vertical; min-height:74px;}
+  input:focus, textarea:focus{outline:2px solid var(--bronze); outline-offset:1px;}
+  /* ---------- Tabs ---------- */
+  nav.tabs{
+    position:sticky; top:0; z-index:30; background:var(--paper);
+    display:flex; gap:4px; max-width:900px; margin:14px auto 0; padding:8px 12px 10px;
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+  }
+  .tab{
+    flex:1; white-space:nowrap; text-align:center; padding:9px 14px; border-radius:999px;
+    font-size:13px; font-weight:700; letter-spacing:.03em; cursor:pointer;
+    color:var(--ink-2); border:1px solid var(--line); background:var(--surface); font-family:inherit;
+  }
+  .tab[aria-selected=true]{background:var(--navy); color:#fff; border-color:var(--navy);}
+  @media (prefers-color-scheme: dark){ .tab[aria-selected=true]{background:var(--chart-1); border-color:var(--chart-1);} }
+  .tab .flag{display:inline-block; min-width:18px; padding:0 5px; margin-left:4px; border-radius:9px; background:var(--bad); color:#fff; font-size:11px;}
+  main{max-width:900px; margin:0 auto; padding:12px 16px 40px;}
+  section.view{display:none;}
+  section.view.active{display:block;}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; margin-bottom:16px;}
+  .card h2{font-size:15px; text-transform:uppercase; letter-spacing:.12em; font-weight:800; color:var(--ink); margin-bottom:2px;}
+  .card .sub{font-size:13px; color:var(--ink-2); margin-bottom:12px;}
+  .verse{font-size:12.5px; font-style:italic; color:var(--ink-3); margin-top:10px;}
+  .num-label{display:inline-block; font-size:11px; font-weight:800; color:var(--bronze); letter-spacing:.18em; margin-bottom:4px;}
+  /* ---------- Photo ---------- */
+  .photo-zone{display:flex; gap:14px; align-items:center; flex-wrap:wrap;}
+  .photo-btn{
+    display:inline-flex; align-items:center; gap:8px; background:var(--navy); color:#fff;
+    border:none; border-radius:10px; padding:12px 16px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+  .photo-thumb{width:84px; height:84px; object-fit:cover; border-radius:10px; border:2px solid var(--bronze); cursor:zoom-in;}
+  .photo-meta{font-size:12px; color:var(--ink-2);}
+  .link-btn{background:none; border:none; color:var(--bad); font-size:12px; cursor:pointer; text-decoration:underline; font-family:inherit; padding:0;}
+  /* ---------- Wheel ---------- */
+  .wheel-wrap{display:flex; justify-content:center;}
+  svg.wheel{width:100%; max-width:500px; height:auto; touch-action:manipulation; overflow:visible;}
+  .score-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px;}
+  @media(max-width:520px){.score-grid{grid-template-columns:1fr;}}
+  .score-row{
+    display:flex; align-items:center; justify-content:space-between; gap:8px;
+    border:1px solid var(--line); border-radius:10px; padding:8px 10px; background:var(--surface);
+  }
+  .score-row.low{border-color:var(--bad); background:var(--bad-bg);}
+  .score-row .nm{font-size:13px; font-weight:600; flex:1;}
+  .score-row .nm small{display:block; font-weight:400; color:var(--bad); font-size:11px;}
+  .stepper{display:flex; align-items:center; gap:6px;}
+  .stepper button{
+    width:32px; height:32px; border-radius:8px; border:1px solid var(--line); background:var(--paper);
+    color:var(--ink); font-size:17px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+  .stepper .val{width:26px; text-align:center; font-weight:800; font-size:16px; font-variant-numeric:tabular-nums;}
+  /* ---------- Alignment ---------- */
+  .align-row{padding:12px 0; border-bottom:1px dashed var(--line);}
+  .align-row:last-child{border-bottom:none;}
+  .align-row .ttl{font-weight:800; font-size:14px;}
+  .align-row .dsc{font-size:12px; color:var(--ink-2); margin:2px 0 8px;}
+  .seg{display:flex; gap:6px;}
+  .seg button{
+    flex:1; padding:8px 4px; border-radius:9px; border:1.5px solid var(--line); background:var(--surface);
+    font-size:12px; font-weight:700; color:var(--ink-2); cursor:pointer; font-family:inherit;
+  }
+  .seg button[data-on="behind"]{background:var(--bad-bg); border-color:var(--bad); color:var(--bad);}
+  .seg button[data-on="on"]{background:var(--good-bg); border-color:var(--good); color:var(--good);}
+  .seg button[data-on="ahead"]{background:var(--ahead-bg); border-color:var(--ahead); color:var(--ahead);}
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    background:var(--bronze); color:#fff; border:none; border-radius:10px;
+    padding:13px 20px; font-size:15px; font-weight:800; letter-spacing:.03em; cursor:pointer; font-family:inherit;
+  }
+  .btn.navy{background:var(--navy);}
+  .btn.ghost{background:transparent; color:var(--ink-2); border:1px solid var(--line); font-weight:600;}
+  .btn.block{width:100%;}
+  .btn:disabled{opacity:.45; cursor:not-allowed;}
+  .save-note{font-size:12px; color:var(--good); font-weight:700; text-align:center; margin-top:8px; min-height:16px;}
+  /* ---------- Trends ---------- */
+  .spark-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:10px;}
+  .spark{border:1px solid var(--line); border-radius:12px; padding:10px 12px 6px; background:var(--surface);}
+  .spark .t{font-size:12px; font-weight:700; color:var(--ink-2); display:flex; justify-content:space-between; align-items:center; gap:6px;}
+  .delta{font-size:11px; font-weight:800; padding:1px 7px; border-radius:8px; white-space:nowrap;}
+  .delta.up{color:var(--good); background:var(--good-bg);}
+  .delta.dn{color:var(--bad); background:var(--bad-bg);}
+  .delta.fl{color:var(--ink-3); background:var(--paper);}
+  .legend{display:flex; gap:16px; font-size:12px; color:var(--ink-2); margin:8px 0 4px; justify-content:center;}
+  .legend .sw{display:inline-block; width:14px; height:4px; border-radius:2px; vertical-align:middle; margin-right:5px;}
+  table.align-hist{width:100%; border-collapse:collapse; font-size:12px;}
+  table.align-hist th{color:var(--ink-3); font-weight:700; text-align:left; padding:6px 6px; font-size:11px; letter-spacing:.05em;}
+  table.align-hist td{padding:5px 6px; border-top:1px solid var(--line);}
+  .pill{display:inline-block; min-width:26px; text-align:center; font-weight:800; font-size:11px; border-radius:7px; padding:2px 6px;}
+  .pill.B{background:var(--bad-bg); color:var(--bad);}
+  .pill.O{background:var(--good-bg); color:var(--good);}
+  .pill.A{background:var(--ahead-bg); color:var(--ahead);}
+  .pill.x{background:var(--paper); color:var(--ink-3);}
+  .tbl-scroll{overflow-x:auto;}
+  /* ---------- Plans ---------- */
+  .plan-card{border-left:4px solid var(--bad);}
+  .plan-card.done{border-left-color:var(--good);}
+  .plan-card h3{font-size:16px; font-weight:800;}
+  .plan-card .score-chip{
+    display:inline-block; background:var(--bad-bg); color:var(--bad); font-weight:800;
+    border-radius:8px; padding:2px 9px; font-size:12px; margin-left:8px;
+  }
+  .gate{background:var(--bronze-pale); border-radius:10px; padding:12px; margin:12px 0;}
+  .gate p{font-size:13px; font-weight:600; margin-bottom:8px;}
+  .plan-fields{display:grid; gap:10px; margin-top:12px;}
+  .wk{display:flex; gap:10px; align-items:flex-start;}
+  .wk .wk-n{
+    flex-shrink:0; width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:4px;
+  }
+  .wk input[type=checkbox]{width:22px; height:22px; margin-top:10px; accent-color:var(--good); flex-shrink:0;}
+  .sugg{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;}
+  .sugg button{
+    font-size:12px; border:1px dashed var(--bronze); color:var(--bronze); background:none;
+    border-radius:999px; padding:4px 10px; cursor:pointer; font-family:inherit;
+  }
+  .empty{ text-align:center; color:var(--ink-2); padding:30px 10px; font-size:14px;}
+  .empty .big{font-size:34px; margin-bottom:6px;}
+  /* ---------- Share ---------- */
+  .share-block{white-space:pre-wrap; font-size:14px; background:var(--paper); border:1px dashed var(--line); border-radius:10px; padding:14px; line-height:1.6;}
+  /* ---------- Modal ---------- */
+  .modal{position:fixed; inset:0; background:rgba(10,15,28,.85); display:none; align-items:center; justify-content:center; z-index:99; padding:16px;}
+  .modal.open{display:flex;}
+  .modal img{max-width:100%; max-height:90vh; border-radius:8px;}
+  footer{max-width:900px; margin:10px auto 0; padding:0 20px; text-align:center; font-size:12px; font-style:italic; color:var(--ink-3);}
+  @media print{
+    header, nav.tabs, .id-bar, .no-print, footer{display:none !important;}
+    body{background:#fff; padding:0;}
+    .card{box-shadow:none; break-inside:avoid;}
+    section.view{display:none;} section.view.print-me{display:block !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-row">
+    <!-- C12 hexagon mark -->
+    <svg width="52" height="52" viewBox="0 0 60 60" aria-label="C12">
+      <polygon points="30,3 55,16 55,44 30,57 5,44 5,16" fill="#12203C" stroke="#C9A06A" stroke-width="2"/>
+      <polyline points="38,14 52,30 38,46" fill="none" stroke="#A87C4F" stroke-width="5" stroke-linejoin="miter"/>
+      <text x="26" y="36" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="15" font-weight="900" fill="#FFFFFF">C12</text>
+    </svg>
+    <div class="hd-title">
+      <div class="kicker">Life &amp; Leadership Balance Wheel</div>
+      <h1>Member Snapshot</h1>
+      <div class="hd-sub">"So then each of us will give an account of himself to God." — Romans 14:12</div>
+    </div>
+    <div class="hd-actions no-print">
+      <button class="icon-btn" id="btnExport" title="Back up your data as a file">Export</button>
+      <button class="icon-btn" id="btnImport" title="Restore from a backup file">Import</button>
+    </div>
+  </div>
+</header>
+
+<div class="id-bar no-print">
+  <div class="field"><label class="small" for="memberSel">Member</label>
+    <div style="display:flex; gap:6px">
+      <select id="memberSel" style="flex:1"></select>
+      <button class="icon-btn" id="btnRenameMember" style="color:var(--ink); border-color:var(--line); background:var(--surface)" title="Rename">&#9998;</button>
+      <button class="icon-btn" id="btnAddMember" style="color:var(--ink); border-color:var(--line); background:var(--surface)" title="Add member">&#65291;</button>
+    </div></div>
+  <div class="field"><label class="small" for="monthPick">Snapshot month</label>
+    <input type="month" id="monthPick"></div>
+</div>
+<div class="id-bar no-print" id="iosTip" style="display:none">
+  <div class="card" style="margin:0; padding:12px 14px; width:100%; border-left:4px solid var(--bronze)">
+    <b>&#128204; Protect your history:</b> tap Share &rarr; <b>Add to Home Screen</b>. iPhone can clear browser data for sites unused for a week &mdash; the home-screen app keeps your snapshots safe.
+    <button class="link-btn" id="tipDismiss" style="color:var(--bronze); margin-left:6px">Got it</button>
+  </div>
+</div>
+
+<nav class="tabs no-print" role="tablist">
+  <button class="tab" role="tab" data-view="snapshot" aria-selected="true">Snapshot</button>
+  <button class="tab" role="tab" data-view="trends" aria-selected="false">Trends</button>
+  <button class="tab" role="tab" data-view="plans" aria-selected="false">30-Day Plans<span class="flag" id="planFlag" style="display:none">0</span></button>
+  <button class="tab" role="tab" data-view="share" aria-selected="false">Share</button>
+</nav>
+
+<main>
+  <!-- ================= SNAPSHOT ================= -->
+  <section class="view active" id="view-snapshot">
+    <div class="card no-print">
+      <span class="num-label">01 — CAPTURE</span>
+      <h2>Photo of Your Paper Sheet</h2>
+      <div class="sub">Snap your completed Member Snapshot at the table. It stays attached to this month's record.</div>
+      <div class="photo-zone">
+        <button class="photo-btn" id="btnPhoto">&#128247; Take / Upload Photo</button>
+        <input type="file" id="photoInput" accept="image/*" capture="environment" hidden>
+        <span id="photoSlot"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="num-label">02 — SCORE</span>
+      <h2>Balance Wheel</h2>
+      <div class="sub">Tap a ring in each slice, or use the steppers. 1 = center (empty), 10 = outer edge (full).</div>
+      <div class="wheel-wrap" id="wheelBox"></div>
+      <div class="score-grid" id="scoreGrid"></div>
+      <div class="verse">Scores of 5 or below are flagged for a 30-day recovery plan.</div>
+    </div>
+
+    <div class="card">
+      <span class="num-label">03 — BUSINESS</span>
+      <h2>5-Point Alignment Assessment</h2>
+      <div class="sub">Where does the business stand against plan?</div>
+      <div id="alignBox"></div>
+    </div>
+
+    <div class="card">
+      <span class="num-label">04 — CELEBRATE</span>
+      <h2>Big Wins &amp; Notable Events</h2>
+      <textarea id="winsInput" placeholder="What went right this month? Wins at work, at home, in ministry..."></textarea>
+    </div>
+
+    <div class="no-print">
+      <button class="btn navy block" id="btnSave">Save This Month's Snapshot</button>
+      <div class="save-note" id="saveNote"></div>
+    </div>
+  </section>
+
+  <!-- ================= TRENDS ================= -->
+  <section class="view" id="view-trends">
+    <div id="focusBox"></div>
+    <div class="card">
+      <h2>Wheel — This Month vs Last</h2>
+      <div class="legend">
+        <span><span class="sw" style="background:var(--chart-1); height:10px; border-radius:3px;"></span>This month</span>
+        <span><span class="sw" style="background:var(--chart-2);"></span>Last month</span>
+      </div>
+      <div class="wheel-wrap" id="wheelCompareBox"></div>
+    </div>
+    <div class="card">
+      <h2>Area Trends</h2>
+      <div class="sub" id="trendSub"></div>
+      <div class="spark-grid" id="sparkGrid"></div>
+    </div>
+    <div class="card">
+      <h2>Business Alignment History</h2>
+      <div class="sub"><span class="pill B">B</span> Behind &nbsp; <span class="pill O">O</span> On target &nbsp; <span class="pill A">A</span> Ahead</div>
+      <div class="tbl-scroll"><table class="align-hist" id="alignHist"></table></div>
+    </div>
+    <div class="card no-print" style="text-align:center" id="sampleCard">
+      <div class="sub">Just exploring? Load six months of sample history to see how trends work.</div>
+      <button class="btn ghost" id="btnSample">Load Sample Data</button>
+      <button class="btn ghost" id="btnClear" style="margin-left:8px">Erase All Data</button>
+    </div>
+  </section>
+
+  <!-- ================= PLANS ================= -->
+  <section class="view" id="view-plans">
+    <div class="card" style="border-left:4px solid var(--bronze)">
+      <h2>30-Day Recovery Plans</h2>
+      <div class="sub">Any wheel area at <b>5 or below</b>, or business area <b>Behind Target</b>, lands here.
+      First, honestly explain <i>why</i> it's low — then commit to a practical 30-day plan. No explanation, no plan; no plan, no progress.</div>
+      <button class="btn ghost no-print" id="btnPrintPlans">&#128424; Print My Plans</button>
+    </div>
+    <div id="plansBox"></div>
+  </section>
+
+  <!-- ================= SHARE ================= -->
+  <section class="view" id="view-share">
+    <div class="card">
+      <h2>Share With the Group</h2>
+      <div class="sub">Your talking points for the table, generated from this month's snapshot.</div>
+      <div class="share-block" id="shareText"></div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center" class="no-print">
+        <button class="btn" id="btnCopy">Copy Talking Points</button>
+        <button class="btn ghost" id="btnSms">&#128241; Text My Commitments to My Partner</button>
+        <span class="save-note" id="copyNote" style="display:inline-block"></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>"Commit your work to the L<small>ORD</small>, and your plans will be established." — Proverbs 16:3</footer>
+
+<div class="modal" id="photoModal"><img id="modalImg" alt="Snapshot photo"></div>
+<input type="file" id="importInput" accept="application/json" hidden>
+
+<script>
+"use strict";
+/* ================= DATA MODEL ================= */
+const AREAS = [
+  {id:"marriage",  name:"Marriage & Family"},
+  {id:"finances",  name:"Personal Finances"},
+  {id:"community", name:"Biblical Community"},
+  {id:"fun",       name:"Fun & Recreation"},
+  {id:"fitness",   name:"Fitness & Nutrition"},
+  {id:"rest",      name:"Rest & Retreat"},
+  {id:"walk",      name:"Walk with God"},
+  {id:"disciple",  name:"Discipling Others"},
+];
+const ALIGN = [
+  {id:"revenue", name:"Revenue Generation", desc:"Sales, marketing, product line management, and customer relationships"},
+  {id:"ops",     name:"Operations Management", desc:"Product/service supply chain, fulfillment, technology, and administration"},
+  {id:"orgdev",  name:"Organizational Development", desc:"Recruitment, job selection, talent development, talent management, and succession"},
+  {id:"finmgmt", name:"Financial Management", desc:"Goals, projections, metrics, controls, reporting, and cash management"},
+  {id:"ministry",name:"Ministry", desc:"Kingdom impact / eternal fruit through the business (salvations, ministry giving, discipleship)"},
+];
+const SUGGESTIONS = {
+  walk:["Daily 20-min quiet time before checking phone","Scripture reading plan (one chapter/day)","Weekly prayer walk"],
+  disciple:["Schedule two one-on-one discipleship lunches","Start a workplace Bible study","Identify one person to mentor this month"],
+  marriage:["Weekly date night — on the calendar, non-negotiable","Home by 6:00 three nights a week","One screen-free family evening per week"],
+  finances:["Build/update the family budget together","Automate giving and savings transfers","Meet with financial advisor"],
+  community:["Commit to weekly church attendance","Join or re-engage a small group","Invite another couple to dinner"],
+  fun:["Plan one full day off with zero work contact","Book the trip you keep postponing","Pick up the hobby again — schedule it"],
+  fitness:["Three 30-min workouts per week on calendar","No food after 8pm; cut sugary drinks","Annual physical — book the appointment"],
+  rest:["Protect one full Sabbath day per week","Lights out by 10:30 on weeknights","Plan a quarterly personal retreat half-day"],
+  revenue:["Weekly pipeline review with sales team","Call top 10 customers personally this month","Define one new lead-gen experiment"],
+  ops:["Map the #1 bottleneck process and fix one step","Weekly ops scorecard review","Document top 3 SOPs"],
+  orgdev:["Fill the open seat — post and interview this month","Start monthly one-on-ones with direct reports","Draft succession plan for one key role"],
+  finmgmt:["Weekly cash flash report","Set 13-week cash forecast","Month-end close by day 10"],
+  ministry:["Set a ministry giving % target","Launch chaplaincy / care program conversation","Pray with one employee who's hurting"],
+};
+/* 4-week coaching arcs used by the AI plan drafter */
+const COACH = {
+  walk:["Fix a daily 20-minute quiet time — same time every day, phone in another room.","Add Scripture: one chapter a day; journal one sentence of application.","Share what God is teaching you with your wife or a brother in the group.","Review the month with your accountability partner; lock in the rhythm for next month."],
+  disciple:["List three men God has put in your path; pray over the list daily this week.","Invite one to lunch — no agenda but his story.","Set a recurring meeting with the one who leaned in.","Report back to the group: who are you pouring into, and what's next."],
+  marriage:["Put a weekly date night on the calendar for the next four weeks — non-negotiable.","Be home by 6:00 at least three nights; phone in a drawer at dinner.","Plan one full family day with zero work contact.","Ask your wife: 'What's one thing I could change that would matter most?' Listen. Act."],
+  finances:["Pull the last 60 days of spending; face the real numbers with your wife.","Build (or rebuild) the budget together; automate giving and savings first.","Kill or cut one recurring expense; redirect it to the biggest gap.","Book the meeting with your financial advisor; set the 12-month target."],
+  community:["Show up: commit to church attendance all four Sundays this month.","Rejoin or visit a small group this week.","Invite another couple to dinner — hospitality is the on-ramp.","Say yes to one act of service inside the body."],
+  fun:["Book one full day off this month — put it on the calendar today.","Schedule the hobby you keep postponing; treat it like a client meeting.","Plan the next family adventure or trip — dates on calendar, deposit paid.","Protect it: tell your assistant and your team these blocks are immovable."],
+  fitness:["Book the annual physical; put three 30-minute workouts on the calendar.","Fix one input: cut sugary drinks or late-night eating this week.","Add a workout partner or trainer — accountability beats willpower.","Weigh in, measure, and set the 90-day target with your partner."],
+  rest:["Pick your Sabbath day and defend it for all four weeks this month.","Lights out by 10:30 on weeknights; no email after 9.","Take a half-day personal retreat: silence, Scripture, planning.","Review your calendar with fresh eyes: what standing commitment has to die?"],
+  revenue:["Stand up a weekly pipeline review — same day, same hour, every week.","Personally call your top ten customers; ask what else they need.","Launch one lead-generation experiment with a measurable target.","Review win/loss on the month; double down on what worked."],
+  ops:["Map your #1 bottleneck process on one page; find the constraint.","Fix one step of that constraint this week; measure the change.","Document the top three SOPs your team keeps reinventing.","Install a weekly ops scorecard your leaders own without you."],
+  orgdev:["Write the scorecard for the open or weakest seat this week.","Post the role and book interviews; start monthly one-on-ones with directs.","Identify your successor candidate for one key role; tell them.","Review talent with your leadership team: right people, right seats?"],
+  finmgmt:["Stand up a weekly cash flash: cash in, cash out, runway.","Build the 13-week cash forecast; review it every Monday.","Close the prior month by day 10; publish the scorecard.","Set next quarter's targets with your leadership team — in writing."],
+  ministry:["Set the ministry giving percentage for this year — decide, don't drift.","Open the chaplaincy / employee-care conversation with a provider or pastor.","Pray with or for one employee who's hurting this week.","Share one Kingdom-impact story at your next all-hands."],
+};
+/* ---- Trend intelligence: areas moving the wrong direction ---- */
+function areaSeries(id){
+  return sortedMonths().map(m=>({m, v:entry(m).scores[id]})).filter(d=>d.v!==null);
+}
+function wrongDirection(){
+  const out=[];
+  AREAS.forEach(a=>{
+    const s = areaSeries(a.id);
+    if(s.length<2) return;
+    const last=s[s.length-1].v, prev=s[s.length-2].v;
+    let streak=0;
+    for(let i=s.length-1;i>0 && s[i].v<s[i-1].v;i--) streak++;
+    const drop = last-prev;
+    if((drop<=-2 || streak>=2) && last>LOW_AT)
+      out.push({type:"trend", id:a.id, name:a.name, from:s[Math.max(0,s.length-1-Math.max(streak,1))].v, to:last, streak:Math.max(streak,1), score:last});
+  });
+  return out;
+}
+function draftPlan(f, why){
+  const arc = COACH[f.id] || ["Define the single next step and put it on the calendar.","Execute and report to your partner.","Adjust based on week one; increase the commitment.","Review results with your group and set the next 30 days."];
+  const first = (SUGGESTIONS[f.id]||[])[0] || "Name the first concrete step and schedule it within 72 hours.";
+  const target = f.type==="wheel" ? `Move from ${f.score} to ${Math.min(10, f.score+2)}`
+    : f.type==="trend" ? `Stop the slide — back to ${f.from} or better`
+    : "Back on target by next month's review";
+  const weeks = arc.map(t=>({text:t, done:false}));
+  if(why && why.trim()) weeks[0].text = weeks[0].text + " Start by addressing what you named: \"" + why.trim().slice(0,90) + (why.trim().length>90?"…":"") + "\"";
+  return {target, first, weeks};
+}
+function claudePrompt(f, why){
+  const s = areaSeries(f.id).slice(-6).map(d=>`${fmtMonthShort(d.m)}: ${d.v}`).join(", ");
+  return `I'm a Christian CEO in a C12 peer advisory group. On my Life & Leadership Balance Wheel, my "${f.name}" area ${f.type==="biz"?"is Behind Target":"scored "+f.score+"/10"}${s?` (recent history: ${s})`:""}. My honest explanation for why it's low: "${(why||"").trim()||"(not written yet)"}". Coach me: challenge my explanation if it sounds like a symptom rather than a root cause, then help me build a practical 30-day recovery plan with one first step I can take within 72 hours, four specific weekly commitments, and how my accountability partner should check on me.`;
+}
+const LOW_AT = 5;
+const KEY = "c12_member_snapshot_v2";
+const KEY_V1 = "c12_member_snapshot_v1";
+
+let db = load();
+function newMember(name){ return {name:name||"", entries:{}, plans:{}}; }
+function load(){
+  try{ const d = JSON.parse(localStorage.getItem(KEY)); if(d && d.members) return d; }catch(e){}
+  try{ // migrate v1 (single profile) into a member
+    const v1 = JSON.parse(localStorage.getItem(KEY_V1));
+    if(v1 && v1.entries){
+      const m = newMember(v1.member); m.entries=v1.entries; m.plans=v1.plans||{};
+      return {activeId:"m1", members:{m1:m}};
+    }
+  }catch(e){}
+  return {activeId:"m1", members:{m1:newMember("")}};
+}
+function M(){ return db.members[db.activeId]; }
+function persist(){ localStorage.setItem(KEY, JSON.stringify(db)); }
+
+function monthKeyNow(){ const d=new Date(); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0"); }
+let curMonth = monthKeyNow();
+function entry(mk){ return M().entries[mk]; }
+function ensureEntry(mk){
+  if(!M().entries[mk]) M().entries[mk] = {scores:Object.fromEntries(AREAS.map(a=>[a.id,null])), align:{}, wins:"", photo:null};
+  return M().entries[mk];
+}
+function sortedMonths(){ return Object.keys(M().entries).sort(); }
+function prevMonthOf(mk){ const ms=sortedMonths().filter(m=>m<mk); return ms.length?ms[ms.length-1]:null; }
+function fmtMonth(mk){ const [y,m]=mk.split("-"); return new Date(y, m-1, 1).toLocaleString("en-US",{month:"long",year:"numeric"}); }
+function fmtMonthShort(mk){ const [y,m]=mk.split("-"); return new Date(y, m-1, 1).toLocaleString("en-US",{month:"short"})+" '"+String(y).slice(2); }
+
+/* ================= WHEEL SVG ================= */
+const TAU = Math.PI*2;
+function polar(cx,cy,r,angDeg){ const a=(angDeg-90)*Math.PI/180; return [cx+r*Math.cos(a), cy+r*Math.sin(a)]; }
+function sectorPath(cx,cy,r,a0,a1){
+  const [x0,y0]=polar(cx,cy,r,a0), [x1,y1]=polar(cx,cy,r,a1);
+  return `M${cx},${cy} L${x0.toFixed(1)},${y0.toFixed(1)} A${r},${r} 0 0 1 ${x1.toFixed(1)},${y1.toFixed(1)} Z`;
+}
+function arcPath(cx,cy,r,a0,a1){
+  const [x0,y0]=polar(cx,cy,r,a0), [x1,y1]=polar(cx,cy,r,a1);
+  return `M${x0.toFixed(1)},${y0.toFixed(1)} A${r},${r} 0 0 1 ${x1.toFixed(1)},${y1.toFixed(1)}`;
+}
+function buildWheel(scores, opts){
+  const interactive = !!(opts&&opts.interactive);
+  const prev = opts&&opts.prev;
+  const S=420, C=S/2, HOLE=26, R=158, LABEL_R=R+14;
+  const css = getComputedStyle(document.documentElement);
+  const c1 = css.getPropertyValue("--chart-1").trim(), c2 = css.getPropertyValue("--chart-2").trim();
+  const line = css.getPropertyValue("--line").trim(), surface = css.getPropertyValue("--surface").trim();
+  const ink3 = css.getPropertyValue("--ink-3").trim(), ink2 = css.getPropertyValue("--ink-2").trim();
+  let g = "";
+  // rings
+  for(let r=1;r<=10;r++){
+    g += `<circle cx="${C}" cy="${C}" r="${HOLE+(R-HOLE)*r/10}" fill="none" stroke="${line}" stroke-width="1"/>`;
+  }
+  // filled sectors
+  AREAS.forEach((a,i)=>{
+    const sc = scores[a.id];
+    const a0=i*45, a1=a0+45;
+    if(sc){
+      const r = HOLE+(R-HOLE)*sc/10;
+      g += `<path d="${sectorPath(C,C,r,a0+1.6,a1-1.6)}" fill="${c1}" fill-opacity="0.85" stroke="${surface}" stroke-width="2"/>`;
+    }
+    // spokes
+    const [sx,sy]=polar(C,C,R,a0);
+    g += `<line x1="${C}" y1="${C}" x2="${sx.toFixed(1)}" y2="${sy.toFixed(1)}" stroke="${line}" stroke-width="1"/>`;
+    // prev overlay arc
+    if(prev && prev[a.id]){
+      const pr = HOLE+(R-HOLE)*prev[a.id]/10;
+      g += `<path d="${arcPath(C,C,pr,a0+3,a1-3)}" fill="none" stroke="${c2}" stroke-width="3.5" stroke-linecap="round"/>`;
+    }
+    // score value at sector mid
+    if(sc){
+      const mid=a0+22.5, [tx,ty]=polar(C,C,Math.max(HOLE+(R-HOLE)*sc/10-14, HOLE+16),mid);
+      g += `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="13" font-weight="800" fill="#fff">${sc}</text>`;
+    }
+    // labels
+    const mid=a0+22.5, [lx,ly]=polar(C,C,LABEL_R+12,mid);
+    const sin=Math.sin((mid)*Math.PI/180);
+    const anchor = sin>0.35?"start":(sin<-0.35?"end":"middle");
+    const words = a.name.split(" & ");
+    if(words.length>1){
+      g += `<text x="${lx.toFixed(1)}" y="${(ly-6).toFixed(1)}" text-anchor="${anchor}" font-size="11.5" font-weight="700" fill="${ink2}">${words[0]} &amp;</text>`;
+      g += `<text x="${lx.toFixed(1)}" y="${(ly+7).toFixed(1)}" text-anchor="${anchor}" font-size="11.5" font-weight="700" fill="${ink2}">${words[1]}</text>`;
+    }else{
+      g += `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="${anchor}" font-size="11.5" font-weight="700" fill="${ink2}">${a.name}</text>`;
+    }
+  });
+  // center hole + axis numbers (vertical, recessive)
+  g += `<circle cx="${C}" cy="${C}" r="${HOLE}" fill="${surface}" stroke="${line}"/>`;
+  [2,4,6,8,10].forEach(n=>{
+    const r=HOLE+(R-HOLE)*n/10;
+    g += `<text x="${C+3}" y="${C-r+4}" font-size="8.5" fill="${ink3}">${n}</text>`;
+  });
+  return `<svg class="wheel" viewBox="-80 -8 ${S+160} ${S+16}" ${interactive?'id="wheelSvg"':''} role="img" aria-label="Balance wheel">${g}</svg>`;
+}
+function wheelTap(ev){
+  const svg = document.getElementById("wheelSvg");
+  if(!svg) return;
+  const pt = svg.createSVGPoint(); pt.x=ev.clientX; pt.y=ev.clientY;
+  const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+  const C=210, HOLE=26, R=158;
+  const dx=p.x-C, dy=p.y-C, dist=Math.hypot(dx,dy);
+  if(dist>R+8) return;
+  let ang = Math.atan2(dy,dx)*180/Math.PI + 90; if(ang<0) ang+=360;
+  const idx = Math.floor(ang/45)%8;
+  let score = Math.round((dist-HOLE)/(R-HOLE)*10);
+  score = Math.max(1, Math.min(10, score));
+  const e = ensureEntry(curMonth);
+  e.scores[AREAS[idx].id] = score;
+  persist(); renderSnapshot(); renderFlag();
+}
+
+/* ================= SNAPSHOT VIEW ================= */
+function renderSnapshot(){
+  const e = ensureEntry(curMonth);
+  // wheel
+  document.getElementById("wheelBox").innerHTML = buildWheel(e.scores,{interactive:true});
+  const svg = document.getElementById("wheelSvg");
+  if(svg) svg.addEventListener("pointerdown", wheelTap);
+  // steppers
+  const grid = document.getElementById("scoreGrid");
+  grid.innerHTML = AREAS.map(a=>{
+    const v = e.scores[a.id];
+    const low = v!==null && v<=LOW_AT;
+    return `<div class="score-row${low?' low':''}">
+      <div class="nm">${a.name}${low?'<small>Needs a 30-day plan</small>':''}</div>
+      <div class="stepper">
+        <button aria-label="decrease" data-a="${a.id}" data-d="-1">&minus;</button>
+        <span class="val">${v??"–"}</span>
+        <button aria-label="increase" data-a="${a.id}" data-d="1">+</button>
+      </div></div>`;
+  }).join("");
+  grid.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.a, d=+b.dataset.d;
+    const cur = e.scores[id];
+    e.scores[id] = cur===null ? (d>0?1:1) : Math.max(1,Math.min(10,cur+d));
+    persist(); renderSnapshot(); renderFlag();
+  });
+  // alignment
+  const ab = document.getElementById("alignBox");
+  ab.innerHTML = ALIGN.map(al=>{
+    const v = e.align[al.id]||null;
+    return `<div class="align-row"><div class="ttl">${al.name}</div><div class="dsc">${al.desc}</div>
+      <div class="seg" data-al="${al.id}">
+        <button data-v="behind" ${v==="behind"?'data-on="behind"':''}>Behind Target</button>
+        <button data-v="on" ${v==="on"?'data-on="on"':''}>On Target</button>
+        <button data-v="ahead" ${v==="ahead"?'data-on="ahead"':''}>Ahead of Target</button>
+      </div></div>`;
+  }).join("");
+  ab.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{
+    e.align[b.parentElement.dataset.al]=b.dataset.v;
+    persist(); renderSnapshot(); renderFlag();
+  });
+  // wins
+  const w = document.getElementById("winsInput");
+  w.value = e.wins||"";
+  w.oninput = ()=>{ e.wins=w.value; };
+  // photo
+  renderPhoto(e);
+}
+function renderPhoto(e){
+  const slot = document.getElementById("photoSlot");
+  if(e.photo){
+    slot.innerHTML = `<img class="photo-thumb" src="${e.photo}" alt="Paper sheet photo" id="thumbImg">
+      <div class="photo-meta">Attached to ${fmtMonth(curMonth)}<br><button class="link-btn" id="btnRmPhoto">Remove photo</button></div>`;
+    document.getElementById("thumbImg").onclick=()=>{
+      document.getElementById("modalImg").src=e.photo;
+      document.getElementById("photoModal").classList.add("open");
+    };
+    document.getElementById("btnRmPhoto").onclick=()=>{ e.photo=null; persist(); renderPhoto(e); };
+  } else slot.innerHTML = `<span class="photo-meta">No photo attached yet.</span>`;
+}
+document.getElementById("photoModal").onclick=function(){ this.classList.remove("open"); };
+document.getElementById("btnPhoto").onclick=()=>document.getElementById("photoInput").click();
+document.getElementById("photoInput").onchange=function(){
+  const f=this.files[0]; if(!f) return;
+  const img=new Image();
+  img.onload=()=>{
+    const MAX=1100, sc=Math.min(1,MAX/Math.max(img.width,img.height));
+    const cv=document.createElement("canvas");
+    cv.width=Math.round(img.width*sc); cv.height=Math.round(img.height*sc);
+    cv.getContext("2d").drawImage(img,0,0,cv.width,cv.height);
+    ensureEntry(curMonth).photo = cv.toDataURL("image/jpeg",0.68);
+    persist(); renderPhoto(entry(curMonth));
+    URL.revokeObjectURL(img.src);
+  };
+  img.src=URL.createObjectURL(f);
+  this.value="";
+};
+
+document.getElementById("btnSave").onclick=()=>{
+  const e = ensureEntry(curMonth);
+  e.wins = document.getElementById("winsInput").value;
+  persist();
+  const missing = AREAS.filter(a=>e.scores[a.id]===null).length;
+  const note = document.getElementById("saveNote");
+  note.textContent = missing
+    ? `Saved — but ${missing} wheel area${missing>1?"s":""} still unscored.`
+    : `Saved ${fmtMonth(curMonth)}. ${flaggedAreas(curMonth).length? "Now head to 30-Day Plans →" : "All areas above "+LOW_AT+" — well done."}`;
+  renderFlag(); renderTrends(); renderPlans(); renderShare();
+  setTimeout(()=>{note.textContent="";}, 6000);
+};
+
+/* ================= FLAGGED AREAS ================= */
+function flaggedAreas(mk){
+  const e = entry(mk); if(!e) return [];
+  const out=[];
+  AREAS.forEach(a=>{ const v=e.scores[a.id]; if(v!==null&&v<=LOW_AT) out.push({type:"wheel", id:a.id, name:a.name, score:v}); });
+  ALIGN.forEach(a=>{ if(e.align[a.id]==="behind") out.push({type:"biz", id:a.id, name:a.name, score:"Behind"}); });
+  if(mk===sortedMonths()[sortedMonths().length-1] || mk===curMonth) wrongDirection().forEach(w=>out.push(w));
+  return out;
+}
+function renderFlag(){
+  const n = flaggedAreas(curMonth).length;
+  const f = document.getElementById("planFlag");
+  f.style.display = n? "inline-block":"none"; f.textContent=n;
+}
+
+/* ================= TRENDS ================= */
+function renderTrends(){
+  // wrong-direction early warning
+  const wd = wrongDirection();
+  document.getElementById("focusBox").innerHTML = wd.length ? `
+    <div class="card" style="border-left:4px solid var(--bad)">
+      <h2>&#9888;&#65039; Wrong Direction — Act Early</h2>
+      <div class="sub">Not below ${LOW_AT} yet, but sliding. These deserve airtime at the table before they become a crisis.</div>
+      ${wd.map(w=>`<div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed var(--line)">
+        <div><b style="font-size:14px">${w.name}</b>
+          <div style="font-size:12px; color:var(--bad); font-weight:700">${w.from} &rarr; ${w.to} · down ${w.streak} month${w.streak>1?"s":""} straight</div></div>
+        <button class="btn ghost no-print" data-goplan="1" style="padding:8px 12px; font-size:12px">Start a plan &rarr;</button>
+      </div>`).join("")}
+    </div>` : "";
+  document.querySelectorAll("[data-goplan]").forEach(b=>b.onclick=()=>selectTab("plans"));
+  const e = entry(curMonth), pm = prevMonthOf(curMonth), pe = pm?entry(pm):null;
+  document.getElementById("wheelCompareBox").innerHTML =
+    buildWheel(e?e.scores:Object.fromEntries(AREAS.map(a=>[a.id,null])), {prev: pe?pe.scores:null});
+  // sparklines
+  const months = sortedMonths().slice(-12);
+  document.getElementById("trendSub").textContent = months.length<2
+    ? "Save at least two months of snapshots to see trends."
+    : `Last ${months.length} snapshots · ${fmtMonthShort(months[0])} – ${fmtMonthShort(months[months.length-1])}`;
+  const css = getComputedStyle(document.documentElement);
+  const c1=css.getPropertyValue("--chart-1").trim(), c2=css.getPropertyValue("--chart-2").trim();
+  const line=css.getPropertyValue("--line").trim(), ink3=css.getPropertyValue("--ink-3").trim();
+  const W=180,H=54,P=6;
+  document.getElementById("sparkGrid").innerHTML = AREAS.map(a=>{
+    const vals = months.map(m=>({m, v:entry(m).scores[a.id]})).filter(d=>d.v!==null);
+    let svgStr="", deltaStr="";
+    if(vals.length>=2){
+      const xs = i=> P + (W-2*P) * (vals.length===1?0.5:i/(vals.length-1));
+      const ys = v=> H-P - (H-2*P)*(v-0)/10;
+      const pts = vals.map((d,i)=>`${xs(i).toFixed(1)},${ys(d.v).toFixed(1)}`).join(" ");
+      const last=vals[vals.length-1], prev=vals[vals.length-2];
+      const d = last.v-prev.v;
+      const wdi = wd.find(x=>x.id===a.id);
+      deltaStr = d>0?`<span class="delta up">▲ +${d}</span>`
+        : d<0?`<span class="delta dn">▼ ${d}${wdi&&wdi.streak>1?` · ${wdi.streak}mo`:""}</span>`
+        : `<span class="delta fl">— 0</span>`;
+      svgStr = `<svg width="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" style="display:block">
+        <line x1="${P}" y1="${ys(5)}" x2="${W-P}" y2="${ys(5)}" stroke="${line}" stroke-dasharray="3,3"/>
+        <polyline points="${pts}" fill="none" stroke="${c1}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        ${vals.map((dd,i)=>`<circle cx="${xs(i)}" cy="${ys(dd.v)}" r="${i===vals.length-1?4.5:2.5}" fill="${i===vals.length-1?c2:c1}"><title>${fmtMonthShort(dd.m)}: ${dd.v}</title></circle>`).join("")}
+        <text x="${W-P}" y="${Math.max(10,ys(last.v)-7)}" text-anchor="end" font-size="11" font-weight="800" fill="${c2}">${last.v}</text>
+      </svg>`;
+    } else {
+      const only = vals.length===1 ? `Current: ${vals[0].v}` : "No data yet";
+      svgStr = `<div style="height:${H}px; display:flex; align-items:center; font-size:12px; color:${ink3}">${only}</div>`;
+    }
+    return `<div class="spark"><div class="t"><span>${a.name}</span>${deltaStr}</div>${svgStr}</div>`;
+  }).join("");
+  // alignment history
+  const tbl = document.getElementById("alignHist");
+  const ms = months;
+  tbl.innerHTML = `<tr><th>Business Area</th>${ms.map(m=>`<th>${fmtMonthShort(m)}</th>`).join("")}</tr>` +
+    ALIGN.map(al=>`<tr><td style="font-weight:700">${al.name}</td>${
+      ms.map(m=>{
+        const v = entry(m).align[al.id];
+        const L = v==="behind"?"B":v==="on"?"O":v==="ahead"?"A":"·";
+        return `<td><span class="pill ${L==="·"?"x":L}">${L}</span></td>`;
+      }).join("")}</tr>`).join("");
+  document.getElementById("sampleCard").style.display = sortedMonths().length>1 ? "none":"block";
+}
+
+/* ================= PLANS ================= */
+function planKey(mk,type,id){ return mk+"|"+type+"|"+id; }
+function monthPlans(mk){
+  return Object.keys(M().plans).filter(k=>k.startsWith(mk+"|")).map(k=>{
+    const [,type,id]=k.split("|");
+    const name=(type==="biz"?ALIGN:AREAS).find(a=>a.id===id);
+    return {k, type, id, name:name?name.name:id, p:M().plans[k]};
+  }).filter(x=>x.p && (x.p.first || (x.p.weeks||[]).some(w=>w.text)));
+}
+function followThrough(mk){
+  const ps = monthPlans(mk);
+  let total=0, done=0;
+  ps.forEach(x=>(x.p.weeks||[]).forEach(w=>{ if(w.text){total++; if(w.done)done++;} }));
+  return {plans:ps, total, done};
+}
+function renderPlans(){
+  const box = document.getElementById("plansBox");
+  const flags = flaggedAreas(curMonth);
+  // ---- Close the loop on last month's commitments ----
+  const pm = prevMonthOf(curMonth);
+  let reviewHtml = "";
+  if(pm){
+    const ft = followThrough(pm);
+    if(ft.plans.length){
+      reviewHtml = `<div class="card" style="border-left:4px solid var(--chart-2)">
+        <h2>Close the Loop — ${fmtMonth(pm)}</h2>
+        <div class="sub">Before new plans: did you do what you told the group you'd do?
+        <b>${ft.done}/${ft.total} commitments kept${ft.total?` (${Math.round(ft.done/ft.total*100)}%)`:""}.</b> Check off what got done.</div>
+        ${ft.plans.map(x=>`<div style="margin-bottom:10px"><b style="font-size:14px">${x.name}</b>
+          ${(x.p.weeks||[]).map((w,i)=>w.text?`<label style="display:flex; gap:8px; align-items:center; font-size:13px; padding:4px 0; cursor:pointer">
+            <input type="checkbox" data-rk="${x.k}" data-ri="${i}" ${w.done?"checked":""} style="width:20px;height:20px;accent-color:var(--good)">
+            <span style="${w.done?"text-decoration:line-through;color:var(--ink-3)":""}">${esc(w.text)}</span></label>`:"").join("")}
+        </div>`).join("")}
+      </div>`;
+    }
+  }
+  if(!entry(curMonth) || flags.length===0){
+    box.innerHTML = reviewHtml + `<div class="card"><div class="empty"><div class="big">&#127942;</div>
+      No areas flagged for ${fmtMonth(curMonth)}.<br>Every wheel area is above ${LOW_AT}, nothing is sliding, and the business is on or ahead of target.</div></div>`;
+    wireReview(box);
+    return;
+  }
+  box.innerHTML = reviewHtml + flags.map(f=>{
+    const k = planKey(curMonth,f.type,f.id);
+    const p = M().plans[k] || null;
+    const sugg = SUGGESTIONS[f.id]||[];
+    const gateOK = p && p.why && p.why.trim().length>=15;
+    const doneCount = p&&p.weeks? p.weeks.filter(w=>w.done).length : 0;
+    const chip = f.type==="wheel" ? "Score: "+f.score : f.type==="biz" ? "Behind Target"
+      : `Sliding: ${f.from} &rarr; ${f.to}`;
+    return `<div class="card plan-card${doneCount===4?' done':''}" data-k="${k}" data-t="${f.type}" data-a="${f.id}">
+      <h3>${f.name}<span class="score-chip">${chip}</span></h3>
+      ${f.type==="trend"?`<div class="sub" style="margin:4px 0 0">Not low yet — but it's been moving the wrong direction for ${f.streak} month${f.streak>1?"s":""}. Get ahead of it.</div>`:""}
+      <div class="gate">
+        <p>Step 1 — Be honest with the group: <b>why is this area ${f.type==="trend"?"slipping":"low"}?</b></p>
+        <textarea data-f="why" placeholder="What's really driving this? Root cause, not symptoms. (At least a sentence or two.)">${p?esc(p.why||""):""}</textarea>
+      </div>
+      ${gateOK ? `
+      <div class="plan-fields">
+        <div class="no-print" style="display:flex; gap:8px; flex-wrap:wrap">
+          <button class="btn" data-draft="1" style="padding:9px 14px; font-size:13px">&#10024; Draft my 30-day plan</button>
+          <button class="btn ghost" data-claude="1" style="padding:9px 14px; font-size:13px">Coach me in Claude &rarr;</button>
+        </div>
+        <div><label class="small">Step 2 — 30-day target</label>
+          <input type="text" data-f="target" placeholder="${f.type==='wheel' ? 'e.g., Move from '+f.score+' to '+Math.min(10,(+f.score||5)+2) : 'e.g., Back on target by month-end review'}" value="${p?esc(p.target||""):""}"></div>
+        <div><label class="small">First step — within 72 hours</label>
+          <input type="text" data-f="first" placeholder="The one thing you'll do before Thursday" value="${p?esc(p.first||""):""}">
+          ${sugg.length?`<div class="sugg">${sugg.map(s=>`<button data-sg="${esc(s)}">+ ${s}</button>`).join("")}</div>`:""}
+        </div>
+        ${[0,1,2,3].map(i=>{
+          const wk = p&&p.weeks&&p.weeks[i]? p.weeks[i] : {text:"",done:false};
+          return `<div class="wk"><div class="wk-n">W${i+1}</div>
+            <div style="flex:1"><label class="small">Week ${i+1} commitment</label>
+            <input type="text" data-f="wk${i}" placeholder="Specific, measurable, on the calendar" value="${esc(wk.text)}"></div>
+            <input type="checkbox" data-f="wkdone${i}" ${wk.done?"checked":""} title="Done"></div>`;
+        }).join("")}
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+          <div><label class="small">Accountability partner</label>
+            <input type="text" data-f="partner" placeholder="Which man in the group?" value="${p?esc(p.partner||""):""}"></div>
+          <div><label class="small">Check-in date</label>
+            <input type="date" data-f="checkin" value="${p?(p.checkin||""):""}"></div>
+        </div>
+        <div class="save-note" style="text-align:left">${doneCount}/4 weekly commitments complete${doneCount===4?" — plan finished. Well done.":""}</div>
+      </div>` : `<div class="sub" style="margin:0">Write the honest "why" above (a sentence or two) to unlock the 30-day plan builder.</div>`}
+    </div>`;
+  }).join("");
+  // wire inputs
+  box.querySelectorAll(".plan-card").forEach(card=>{
+    const k = card.dataset.k;
+    const flag = flags.find(f=>planKey(curMonth,f.type,f.id)===k);
+    const get = ()=> M().plans[k] || (M().plans[k]={why:"",target:"",first:"",weeks:[{text:"",done:false},{text:"",done:false},{text:"",done:false},{text:"",done:false}],partner:"",checkin:""});
+    card.querySelectorAll("[data-f]").forEach(inp=>{
+      const f = inp.dataset.f;
+      const ev = inp.type==="checkbox"?"change":"input";
+      inp.addEventListener(ev, ()=>{
+        const p = get();
+        if(f==="why"){ p.why=inp.value; persist();
+          if(p.why.trim().length>=15 && !card.querySelector(".plan-fields")) { renderPlans(); }
+          return; }
+        if(f.startsWith("wkdone")){ p.weeks[+f.slice(6)].done=inp.checked; persist(); renderPlans(); return; }
+        if(f.startsWith("wk")){ p.weeks[+f.slice(2)].text=inp.value; }
+        else p[f]=inp.value;
+        persist();
+      });
+      if(f==="why") inp.addEventListener("blur", ()=>{ const p=M().plans[k]; if(p&&p.why.trim().length>=15) renderPlans(); });
+    });
+    card.querySelectorAll("[data-sg]").forEach(b=>b.onclick=()=>{
+      const p=get(); p.first=b.dataset.sg; persist(); renderPlans();
+    });
+    const bDraft = card.querySelector("[data-draft]");
+    if(bDraft) bDraft.onclick=()=>{
+      const p=get();
+      if((p.first||p.target||p.weeks.some(w=>w.text)) && !confirm("Replace the current plan fields with a fresh AI draft?")) return;
+      const d = draftPlan(flag, p.why);
+      p.target=d.target; p.first=d.first; p.weeks=d.weeks;
+      persist(); renderPlans();
+    };
+    const bClaude = card.querySelector("[data-claude]");
+    if(bClaude) bClaude.onclick=()=>{
+      const p=get();
+      window.open("https://claude.ai/new?q="+encodeURIComponent(claudePrompt(flag, p.why)), "_blank");
+    };
+  });
+  wireReview(box);
+}
+function wireReview(box){
+  box.querySelectorAll("[data-rk]").forEach(cb=>cb.onchange=()=>{
+    const p = M().plans[cb.dataset.rk];
+    if(p && p.weeks && p.weeks[+cb.dataset.ri]){ p.weeks[+cb.dataset.ri].done=cb.checked; persist(); renderPlans(); }
+  });
+}
+document.getElementById("btnPrintPlans").onclick=()=>{
+  document.querySelectorAll("section.view").forEach(s=>s.classList.remove("print-me"));
+  document.getElementById("view-plans").classList.add("print-me");
+  window.print();
+};
+
+/* ================= SHARE ================= */
+function renderShare(){
+  const e = entry(curMonth);
+  const el = document.getElementById("shareText");
+  if(!e){ el.textContent="Save this month's snapshot first."; return; }
+  const scored = AREAS.map(a=>({name:a.name, v:e.scores[a.id]})).filter(a=>a.v!==null);
+  if(!scored.length){ el.textContent="Score your wheel first — talking points appear here."; return; }
+  const sortedHi = [...scored].sort((a,b)=>b.v-a.v);
+  const lows = scored.filter(a=>a.v<=LOW_AT).sort((a,b)=>a.v-b.v);
+  const pm = prevMonthOf(curMonth), pe=pm?entry(pm):null;
+  let improved=[];
+  if(pe) improved = scored.map(a=>{
+      const prev = pe.scores[AREAS.find(x=>x.name===a.name).id];
+      return {name:a.name, d: prev!==null? a.v-prev : 0};
+    }).filter(a=>a.d>0).sort((a,b)=>b.d-a.d);
+  const counsel = lows.length? lows : sortedHi.slice(-1);
+  const behind = ALIGN.filter(a=>e.align[a.id]==="behind").map(a=>a.name);
+  const wd = wrongDirection();
+  const lines = [];
+  lines.push(`${M().name||"Member"} — ${fmtMonth(curMonth)} Snapshot`);
+  lines.push("");
+  lines.push("HIGHEST AREAS: " + sortedHi.slice(0,2).map(a=>`${a.name} (${a.v})`).join(", "));
+  lines.push("CELEBRATING IMPROVEMENT: " + (improved.length? improved.slice(0,2).map(a=>`${a.name} (+${a.d})`).join(", ") : "First month on record — baseline set."));
+  lines.push("LOWEST AREAS: " + (lows.length? lows.map(a=>`${a.name} (${a.v})`).join(", ") : "None at or below "+LOW_AT));
+  if(wd.length) lines.push("MOVING THE WRONG DIRECTION: " + wd.map(w=>`${w.name} (${w.from}→${w.to})`).join(", "));
+  lines.push("ASKING COUNSEL ON: " + counsel.map(a=>a.name).join(", "));
+  if(behind.length) lines.push("BUSINESS BEHIND TARGET: " + behind.join(", "));
+  const pmk = prevMonthOf(curMonth);
+  if(pmk){ const ft = followThrough(pmk);
+    if(ft.total) lines.push(`LAST MONTH'S FOLLOW-THROUGH: ${ft.done}/${ft.total} commitments kept (${Math.round(ft.done/ft.total*100)}%)`); }
+  if(e.wins&&e.wins.trim()) lines.push("", "BIG WINS: " + e.wins.trim());
+  const planCount = flaggedAreas(curMonth).filter(f=>{const p=M().plans[planKey(curMonth,f.type,f.id)]; return p&&p.first;}).length;
+  if(planCount) lines.push("", `30-DAY PLANS COMMITTED: ${planCount} — hold me to them.`);
+  el.textContent = lines.join("\n");
+}
+document.getElementById("btnCopy").onclick=async ()=>{
+  try{ await navigator.clipboard.writeText(document.getElementById("shareText").textContent);
+    document.getElementById("copyNote").textContent="Copied!";
+  }catch(e){ document.getElementById("copyNote").textContent="Select and copy manually."; }
+  setTimeout(()=>document.getElementById("copyNote").textContent="",3000);
+};
+document.getElementById("btnSms").onclick=()=>{
+  const ps = monthPlans(curMonth);
+  if(!ps.length){ alert("Commit to at least one 30-day plan first — then send it to your accountability partner."); return; }
+  const body = `${M().name||"Brother"} here — my C12 commitments for ${fmtMonth(curMonth)}:\n` +
+    ps.map(x=>`• ${x.name}: ${x.p.first||x.p.target}`).join("\n") +
+    `\nHold me to these. Check in on me${ps[0].p.checkin? " around "+ps[0].p.checkin:""}.`;
+  location.href = "sms:?&body=" + encodeURIComponent(body);
+};
+
+/* ================= EXPORT / IMPORT / SAMPLE ================= */
+document.getElementById("btnExport").onclick=()=>{
+  const blob = new Blob([JSON.stringify(db,null,1)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=`c12-snapshot-${(M().name||"member").replace(/\s+/g,"-").toLowerCase()}-${curMonth}.json`;
+  a.click(); URL.revokeObjectURL(a.href);
+};
+document.getElementById("btnImport").onclick=()=>document.getElementById("importInput").click();
+document.getElementById("importInput").onchange=function(){
+  const f=this.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{ try{
+      const d=JSON.parse(r.result);
+      if(d.members){ db=d; }
+      else if(d.entries){ // v1 backup → import as a member
+        const id="m"+Date.now().toString(36);
+        db.members[id]={name:d.member||"Imported", entries:d.entries, plans:d.plans||{}};
+        db.activeId=id;
+      } else throw 0;
+      persist(); boot();
+      alert("Backup restored.");
+    }catch(e){ alert("That file doesn't look like a C12 Snapshot backup."); } };
+  r.readAsText(f); this.value="";
+};
+document.getElementById("btnSample").onclick=()=>{
+  if(sortedMonths().length && !confirm("This adds six months of sample history. Continue?")) return;
+  loadSample();
+};
+function loadSample(){
+  if(!M().name) M().name="Demo Member";
+  const base={walk:6,disciple:4,marriage:9,finances:8,community:6,fun:4,fitness:5,rest:3};
+  const drift={walk:.4,disciple:.3,marriage:-.55,finances:.1,community:.2,fun:.2,fitness:.5,rest:.4};
+  const now=new Date();
+  for(let i=5;i>=0;i--){
+    const d=new Date(now.getFullYear(), now.getMonth()-i, 1);
+    const mk=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+    const e=ensureEntry(mk);
+    AREAS.forEach((a,j)=>{
+      const wob = Math.round(Math.sin(i*1.3+j)*1.2);
+      e.scores[a.id]=Math.max(1,Math.min(10,Math.round(base[a.id]+drift[a.id]*(5-i)+wob*.5)));
+    });
+    ALIGN.forEach((al,j)=>{ e.align[al.id]= (i>3&&j<2)?"behind" : (j===4&&i<2)?"ahead":"on"; });
+    if(i===0) e.wins="Closed the Henderson account; family vacation booked for September.";
+  }
+  persist(); boot();
+}
+document.getElementById("btnClear").onclick=()=>{
+  if(confirm(`Erase all snapshots, photos, and plans for ${M().name||"this member"} on this device? (Other members are untouched.)`)){
+    db.members[db.activeId]=newMember(M().name); persist(); boot();
+  }
+};
+
+/* ================= UTIL / BOOT ================= */
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;"); }
+function selectTab(name){
+  document.querySelectorAll(".tab").forEach(x=>x.setAttribute("aria-selected", x.dataset.view===name));
+  document.querySelectorAll("section.view").forEach(s=>s.classList.toggle("active", s.id==="view-"+name));
+  if(name==="trends") renderTrends();
+  if(name==="plans") renderPlans();
+  if(name==="share") renderShare();
+}
+document.querySelectorAll(".tab").forEach(t=>t.onclick=()=>selectTab(t.dataset.view));
+document.getElementById("monthPick").onchange=function(){
+  if(this.value){ curMonth=this.value; boot(); }
+};
+/* ---- member profiles ---- */
+function renderMembers(){
+  const sel = document.getElementById("memberSel");
+  sel.innerHTML = Object.entries(db.members).map(([id,m])=>
+    `<option value="${id}" ${id===db.activeId?"selected":""}>${esc(m.name||"Set your name…")}</option>`).join("");
+}
+document.getElementById("memberSel").onchange=function(){ db.activeId=this.value; persist(); boot(); };
+document.getElementById("btnAddMember").onclick=()=>{
+  const name = prompt("New member's name:"); if(!name||!name.trim()) return;
+  const id="m"+Date.now().toString(36);
+  db.members[id]=newMember(name.trim()); db.activeId=id; persist(); boot();
+};
+document.getElementById("btnRenameMember").onclick=()=>{
+  const name = prompt("Member name:", M().name); if(name===null) return;
+  M().name=name.trim(); persist(); boot();
+};
+/* ---- iOS home-screen tip ---- */
+(function(){
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+  if(isIOS && !standalone && !localStorage.getItem("c12_tip_done"))
+    document.getElementById("iosTip").style.display="flex";
+  document.getElementById("tipDismiss").onclick=()=>{
+    localStorage.setItem("c12_tip_done","1");
+    document.getElementById("iosTip").style.display="none";
+  };
+})();
+
+function boot(){
+  renderMembers();
+  document.getElementById("monthPick").value = curMonth;
+  renderSnapshot(); renderFlag(); renderTrends(); renderPlans(); renderShare();
+}
+if(location.search.includes("demo=1") && !sortedMonths().length) loadSample();
+boot();
+function applyRouteTab(){
+  const q = new URLSearchParams(location.search).get("tab");
+  const h = location.hash.replace("#","");
+  const t = ["snapshot","trends","plans","share"].find(x=>x===h||x===q);
+  if(t) try{ selectTab(t); }catch(e){}
+}
+applyRouteTab();
+window.addEventListener("hashchange", applyRouteTab);
+
+</script>
+</body>
+</html>
