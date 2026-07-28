@@ -16,21 +16,11 @@
     --chart-1:#3A5D9F; --chart-2:#B9741F;
     --good:#1E7B3C; --good-bg:#E3F2E7; --bad:#B3261E; --bad-bg:#F9E5E3;
     --ahead:#8A5A14; --ahead-bg:#F5E8D2;
-    --paper:#F5F3EF; --surface:#FFFFFF; --line:#E2DFD8;
+    --paper:#FFFFFF; --surface:#FFFFFF; --line:#E2DFD8;
     --ink:#1C2434; --ink-2:#55606F; --ink-3:#8B93A0;
     --shadow:0 1px 3px rgba(20,30,55,.08), 0 4px 16px rgba(20,30,55,.06);
     --radius:14px;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --chart-1:#5C7FC4; --chart-2:#C08034;
-      --good:#5CB878; --good-bg:#173322; --bad:#E4776D; --bad-bg:#3A1F1C;
-      --ahead:#D0A05C; --ahead-bg:#33270F;
-      --paper:#0F1420; --surface:#141A26; --line:#28324A;
-      --ink:#E8EAF0; --ink-2:#A9B2C2; --ink-3:#6C7789;
-      --bronze-pale:#2C2618;
-      --shadow:0 1px 3px rgba(0,0,0,.4);
-    }
+    color-scheme: light;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{-webkit-text-size-adjust:100%;}
@@ -62,8 +52,9 @@
   label.small{display:block; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3); font-weight:700; margin-bottom:4px;}
   input[type=text], input[type=month], input[type=date], textarea, select{
     width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px;
-    background:var(--surface); color:var(--ink); font-family:inherit; font-size:15px;
+    background:var(--surface); color:var(--ink); font-family:inherit; font-size:16px;
   }
+  button{touch-action:manipulation;}
   textarea{resize:vertical; min-height:74px;}
   input:focus, textarea:focus{outline:2px solid var(--bronze); outline-offset:1px;}
   /* ---------- Tabs ---------- */
@@ -78,7 +69,6 @@
     color:var(--ink-2); border:1px solid var(--line); background:var(--surface); font-family:inherit;
   }
   .tab[aria-selected=true]{background:var(--navy); color:#fff; border-color:var(--navy);}
-  @media (prefers-color-scheme: dark){ .tab[aria-selected=true]{background:var(--chart-1); border-color:var(--chart-1);} }
   .tab .flag{display:inline-block; min-width:18px; padding:0 5px; margin-left:4px; border-radius:9px; background:var(--bad); color:#fff; font-size:11px;}
   main{max-width:900px; margin:0 auto; padding:12px 16px 40px;}
   section.view{display:none;}
@@ -536,9 +526,26 @@ function wheelTap(ev){
   const idx = Math.floor(ang/45)%8;
   let score = Math.round((dist-HOLE)/(R-HOLE)*10);
   score = Math.max(1, Math.min(10, score));
+  setScore(AREAS[idx].id, score);
+}
+/* targeted updates — never rebuild the page mid-interaction */
+function updateWheel(){
   const e = ensureEntry(curMonth);
-  e.scores[AREAS[idx].id] = score;
-  persist(); renderSnapshot(); renderFlag();
+  document.getElementById("wheelBox").innerHTML = buildWheel(e.scores,{interactive:true});
+  document.getElementById("wheelSvg").addEventListener("pointerdown", wheelTap);
+}
+function updateScoreRow(id){
+  const e = ensureEntry(curMonth);
+  const row = document.querySelector(`.score-row[data-area="${id}"]`);
+  if(!row) return;
+  const v = e.scores[id], low = v!==null && v<=LOW_AT;
+  row.classList.toggle("low", low);
+  row.querySelector(".val").textContent = v??"–";
+  row.querySelector(".nm").innerHTML = AREAS.find(a=>a.id===id).name + (low?'<small>Needs a 30-day plan</small>':'');
+}
+function setScore(id, v){
+  ensureEntry(curMonth).scores[id]=v; persist();
+  updateWheel(); updateScoreRow(id); renderFlag();
 }
 
 /* ================= SNAPSHOT VIEW ================= */
@@ -553,7 +560,7 @@ function renderSnapshot(){
   grid.innerHTML = AREAS.map(a=>{
     const v = e.scores[a.id];
     const low = v!==null && v<=LOW_AT;
-    return `<div class="score-row${low?' low':''}">
+    return `<div class="score-row${low?' low':''}" data-area="${a.id}">
       <div class="nm">${a.name}${low?'<small>Needs a 30-day plan</small>':''}</div>
       <div class="stepper">
         <button aria-label="decrease" data-a="${a.id}" data-d="-1">&minus;</button>
@@ -563,9 +570,8 @@ function renderSnapshot(){
   }).join("");
   grid.querySelectorAll("button").forEach(b=>b.onclick=()=>{
     const id=b.dataset.a, d=+b.dataset.d;
-    const cur = e.scores[id];
-    e.scores[id] = cur===null ? (d>0?1:1) : Math.max(1,Math.min(10,cur+d));
-    persist(); renderSnapshot(); renderFlag();
+    const cur = ensureEntry(curMonth).scores[id];
+    setScore(id, cur===null ? 1 : Math.max(1,Math.min(10,cur+d)));
   });
   // alignment
   const ab = document.getElementById("alignBox");
@@ -579,8 +585,12 @@ function renderSnapshot(){
       </div></div>`;
   }).join("");
   ab.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{
-    e.align[b.parentElement.dataset.al]=b.dataset.v;
-    persist(); renderSnapshot(); renderFlag();
+    ensureEntry(curMonth).align[b.parentElement.dataset.al]=b.dataset.v;
+    persist();
+    b.parentElement.querySelectorAll("button").forEach(x=>{
+      if(x===b) x.setAttribute("data-on", x.dataset.v); else x.removeAttribute("data-on");
+    });
+    renderFlag();
   });
   // wins
   const w = document.getElementById("winsInput");
@@ -739,7 +749,7 @@ function renderPlans(){
       reviewHtml = `<div class="card" style="border-left:4px solid var(--chart-2)">
         <h2>Close the Loop — ${fmtMonth(pm)}</h2>
         <div class="sub">Before new plans: did you do what you told the group you'd do?
-        <b>${ft.done}/${ft.total} commitments kept${ft.total?` (${Math.round(ft.done/ft.total*100)}%)`:""}.</b> Check off what got done.</div>
+        <b data-ftcount>${ft.done}/${ft.total} commitments kept${ft.total?` (${Math.round(ft.done/ft.total*100)}%)`:""}.</b> Check off what got done.</div>
         ${ft.plans.map(x=>`<div style="margin-bottom:10px"><b style="font-size:14px">${x.name}</b>
           ${(x.p.weeks||[]).map((w,i)=>w.text?`<label style="display:flex; gap:8px; align-items:center; font-size:13px; padding:4px 0; cursor:pointer">
             <input type="checkbox" data-rk="${x.k}" data-ri="${i}" ${w.done?"checked":""} style="width:20px;height:20px;accent-color:var(--good)">
@@ -794,8 +804,9 @@ function renderPlans(){
           <div><label class="small">Check-in date</label>
             <input type="date" data-f="checkin" value="${p?(p.checkin||""):""}"></div>
         </div>
-        <div class="save-note" style="text-align:left">${doneCount}/4 weekly commitments complete${doneCount===4?" — plan finished. Well done.":""}</div>
-      </div>` : `<div class="sub" style="margin:0">Write the honest "why" above (a sentence or two) to unlock the 30-day plan builder.</div>`}
+        <div class="save-note plan-note" style="text-align:left">${doneCount}/4 weekly commitments complete${doneCount===4?" — plan finished. Well done.":""}</div>
+      </div>` : `<div class="sub" style="margin:0 0 8px">Write the honest "why" above (a sentence or two), then unlock the builder.</div>
+      <button class="btn navy" data-unlock="1" ${p&&p.why&&p.why.trim().length>=15?"":"disabled"}>Unlock the 30-Day Plan Builder</button>`}
     </div>`;
   }).join("");
   // wire inputs
@@ -809,17 +820,26 @@ function renderPlans(){
       inp.addEventListener(ev, ()=>{
         const p = get();
         if(f==="why"){ p.why=inp.value; persist();
-          if(p.why.trim().length>=15 && !card.querySelector(".plan-fields")) { renderPlans(); }
+          const ub = card.querySelector("[data-unlock]");
+          if(ub) ub.disabled = p.why.trim().length<15;
           return; }
-        if(f.startsWith("wkdone")){ p.weeks[+f.slice(6)].done=inp.checked; persist(); renderPlans(); return; }
+        if(f.startsWith("wkdone")){
+          p.weeks[+f.slice(6)].done=inp.checked; persist();
+          const dc = p.weeks.filter(w=>w.done).length;
+          const note = card.querySelector(".plan-note");
+          if(note) note.textContent = dc+"/4 weekly commitments complete"+(dc===4?" — plan finished. Well done.":"");
+          card.classList.toggle("done", dc===4);
+          return; }
         if(f.startsWith("wk")){ p.weeks[+f.slice(2)].text=inp.value; }
         else p[f]=inp.value;
         persist();
       });
-      if(f==="why") inp.addEventListener("blur", ()=>{ const p=M().plans[k]; if(p&&p.why.trim().length>=15) renderPlans(); });
     });
+    const bUnlock = card.querySelector("[data-unlock]");
+    if(bUnlock) bUnlock.onclick=()=>renderPlans();
     card.querySelectorAll("[data-sg]").forEach(b=>b.onclick=()=>{
-      const p=get(); p.first=b.dataset.sg; persist(); renderPlans();
+      const p=get(); p.first=b.dataset.sg; persist();
+      const fi=card.querySelector("[data-f=first]"); if(fi) fi.value=p.first;
     });
     const bDraft = card.querySelector("[data-draft]");
     if(bDraft) bDraft.onclick=()=>{
@@ -827,7 +847,13 @@ function renderPlans(){
       if((p.first||p.target||p.weeks.some(w=>w.text)) && !confirm("Replace the current plan fields with a fresh AI draft?")) return;
       const d = draftPlan(flag, p.why);
       p.target=d.target; p.first=d.first; p.weeks=d.weeks;
-      persist(); renderPlans();
+      persist();
+      const set=(sel,v)=>{ const el=card.querySelector(sel); if(el) el.value=v; };
+      set("[data-f=target]", p.target); set("[data-f=first]", p.first);
+      p.weeks.forEach((w,i)=>{
+        set(`[data-f=wk${i}]`, w.text);
+        const cb=card.querySelector(`[data-f=wkdone${i}]`); if(cb) cb.checked=w.done;
+      });
     };
     const bClaude = card.querySelector("[data-claude]");
     if(bClaude) bClaude.onclick=()=>{
@@ -840,7 +866,14 @@ function renderPlans(){
 function wireReview(box){
   box.querySelectorAll("[data-rk]").forEach(cb=>cb.onchange=()=>{
     const p = M().plans[cb.dataset.rk];
-    if(p && p.weeks && p.weeks[+cb.dataset.ri]){ p.weeks[+cb.dataset.ri].done=cb.checked; persist(); renderPlans(); }
+    if(!(p && p.weeks && p.weeks[+cb.dataset.ri])) return;
+    p.weeks[+cb.dataset.ri].done=cb.checked; persist();
+    const span = cb.nextElementSibling;
+    if(span) span.style.cssText = cb.checked ? "text-decoration:line-through;color:var(--ink-3)" : "";
+    const fc = box.querySelector("[data-ftcount]");
+    const pmk = prevMonthOf(curMonth);
+    if(fc && pmk){ const ft = followThrough(pmk);
+      fc.textContent = `${ft.done}/${ft.total} commitments kept${ft.total?` (${Math.round(ft.done/ft.total*100)}%)`:""}.`; }
   });
 }
 document.getElementById("btnPrintPlans").onclick=()=>{
